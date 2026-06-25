@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Practice</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; padding: 40px; background: #f4f4f4; }
+        h1 { margin-bottom: 10px; font-size: 1.8rem; }
+        h2 { margin: 40px 0 15px; font-size: 1.2rem; color: #444; }
+        p  { color: #666; margin-bottom: 20px; font-size: 0.9rem; }
+
+        /* =====================
+           EXERCISE 1: Box Model Visualization
+           ===================== */
+
+        .box-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        /* Box 1 — just content, no padding/border/margin */
+        .box-content {
+            width: 150px;
+            height: 80px;
+            background-color: #93c5fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Box 2 — content + padding (larger click area) */
+        .box-padding {
+            width: 150px;
+            background-color: #86efac;
+            padding: 20px;  /* space INSIDE the box */
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Box 3 — content + padding + visible border */
+        .box-border {
+            width: 150px;
+            background-color: #fde68a;
+            padding: 15px;
+            border: 4px solid #f59e0b; /* visible border around the box */
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Box 4 — margin creates space between this box and others */
+        .box-margin {
+            width: 150px;
+            background-color: #f9a8d4;
+            padding: 15px;
+            border: 2px dashed #ec4899;
+            margin: 20px; /* space OUTSIDE the box — pushes it away from others */
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+
+        /* =====================
+           EXERCISE 2: The Broken Box Fix
+           ===================== */
+
+        /*
+            PROBLEM: Without box-sizing: border-box,
+            the padding gets ADDED to the width.
+            So 300px width + 20px padding left + 20px padding right = 340px total. BROKEN!
+
+            FIX: box-sizing: border-box tells the browser to
+            include the padding INSIDE the 300px width. So it stays 300px. FIXED!
+        */
+
+        .broken-box {
+            width: 300px;
+            padding: 20px;
+            border: none;
+            background-color: #fca5a5;
+            margin-bottom: 15px;
+            /* NO box-sizing — this box is actually 340px wide! */
+        }
+
+        .fixed-box {
+            width: 300px;
+            padding: 20px;
+            border: none;
+            background-color: #86efac;
+            box-sizing: border-box; /* FIX: padding stays inside the 300px */
+        }
+
+        .box-label {
+            font-size: 0.75rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+
+        /* =====================
+           EXERCISE 3: Card Component
+           ===================== */
+
+        .card {
+            width: 300px;              /* total card width */
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;          /* keeps image corners rounded */
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;              /* image fills full card width */
+            display: block;
+        }
+
+        .card-body {
+            padding: 20px;            /* 20px space inside the card body */
+        }
+
+        .card-body h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;      /* 15px gap between title and description */
+            color: #1a1a2e;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card-body button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0076ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+
+        .card-body button:hover {
+            background-color: #005ecc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task 3.2 — Box Model Practice</h1>
+
+    <!-- EXERCISE 1 -->
+    <h2>Exercise 1: Box Model Visualization</h2>
+    <p>Each box below demonstrates one layer of the box model: content → padding → border → margin.</p>
+
+    <div class="box-row">
+        <div class="box-content">Content only</div>
+        <div class="box-padding">Content + Padding (space inside)</div>
+        <div class="box-border">Content + Padding + Border</div>
+        <div class="box-margin">Content + Padding + Border + Margin (space outside)</div>
+    </div>
+
+
+    <!-- EXERCISE 2 -->
+    <h2>Exercise 2: Fixing the Broken Box</h2>
+    <p>Both boxes below have width: 300px and padding: 20px. The red one is broken (actually 340px). The green one is fixed.</p>
+
+    <p class="box-label">❌ Broken — 340px wide (padding added on top of width)</p>
+    <div class="broken-box">width: 300px, padding: 20px → actually 340px wide</div>
+
+    <br>
+
+    <p class="box-label">✅ Fixed — 300px wide (padding included inside width)</p>
+    <div class="fixed-box">width: 300px, padding: 20px, box-sizing: border-box → exactly 300px wide</div>
+
+
+    <!-- EXERCISE 3 -->
+    <h2>Exercise 3: Card Component</h2>
+    <p>A 300px card with image, title, description, and a button.</p>
+
+    <div class="card">
+        <img src="C:\Users\great\OneDrive\iyf-s10-week-01--TrevorWachira690-\images\Personal-website.png" alt="Project preview image">
+        <div class="card-body">
+            <h3>My First Project</h3>
+            <p>This is a sample project card. It has exact spacing as required by the task.</p>
+            <button type="button">View Project</button>
+        </div>
+    </div>
+
+</body>
+</html>
