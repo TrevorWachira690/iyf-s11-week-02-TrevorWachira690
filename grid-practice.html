@@ -23,6 +23,11 @@
             height: 120px;
             object-fit: cover;
             border-radius: var(--radius);
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .photo-gallery img:hover {
+            transform: scale(1.05);
         }
 
         /* Exercise 2: Magazine layout */
@@ -75,20 +80,76 @@
             border: 1px solid var(--color-border);
             border-radius: var(--radius);
             padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        .grid-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
         .grid-card h3 { font-size: 1rem; margin-bottom: 0.35rem; }
         .grid-card p { font-size: 0.85rem; margin: 0; }
 
-        @media (min-width: 768px) {
-            .project-grid-demo { grid-template-columns: repeat(2, 1fr); }
+        /* Responsive: Mobile (default) */
+        @media (max-width: 767px) {
+            body { padding: 1rem; }
+            .photo-gallery { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            .photo-gallery img {
+                height: 100px;
+            }
+            .magazine { 
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto auto;
+            }
+            .mag-header { grid-column: 1; }
+            .mag-sidebar { 
+                grid-row: 2;
+                grid-column: 1;
+            }
+            .mag-main { 
+                grid-column: 1;
+            }
+            .mag-footer { 
+                grid-column: 1;
+                grid-row: 5;
+            }
+            .project-grid-demo { 
+                grid-template-columns: 1fr;
+            }
         }
+
+        /* Responsive: Tablet */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .photo-gallery { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-grid-demo { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .magazine {
+                grid-template-columns: 150px 1fr;
+                grid-template-rows: auto 1fr 1fr auto;
+            }
+        }
+
+        /* Responsive: Desktop */
         @media (min-width: 1024px) {
-            .project-grid-demo { grid-template-columns: repeat(3, 1fr); }
+            .photo-gallery { 
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .project-grid-demo { 
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .magazine {
+                grid-template-columns: 200px 1fr;
+            }
         }
-        @media (max-width: 600px) {
-            .photo-gallery { grid-template-columns: repeat(2, 1fr); }
-            .magazine { grid-template-columns: 1fr; }
-            .mag-sidebar { grid-row: auto; }
+
+        /* Responsive: Large Desktop */
+        @media (min-width: 1280px) {
+            body { max-width: 1200px; }
         }
     </style>
 </head>
@@ -99,7 +160,7 @@
 
     <section class="practice-section">
         <h2>Exercise 1: Photo Gallery</h2>
-        <p>A 3-column grid with equal widths and consistent gaps.</p>
+        <p>A responsive 3-column grid (or 2 on tablet, 1 on mobile) with equal widths and consistent gaps.</p>
         <div class="photo-gallery">
             <img src="https://placehold.co/300x200/0076ff/ffffff?text=Photo+1" alt="Gallery photo 1">
             <img src="https://placehold.co/300x200/6366f1/ffffff?text=Photo+2" alt="Gallery photo 2">
@@ -112,7 +173,7 @@
 
     <section class="practice-section">
         <h2>Exercise 2: Magazine Layout</h2>
-        <p>Header and footer span full width; sidebar sits beside main content.</p>
+        <p>Header and footer span full width; sidebar sits beside main content. Responsive on mobile.</p>
         <div class="magazine">
             <header class="mag-header">Site Header — spans full width</header>
             <aside class="mag-sidebar">Sidebar — links, ads, or extra info</aside>
@@ -126,9 +187,30 @@
         <h2>Exercise 3: Responsive Project Grid</h2>
         <p>1 column on mobile, 2 on tablet, 3 on desktop (resize to test).</p>
         <div class="project-grid-demo">
-            <article class="grid-card"><h3>Portfolio Site</h3><p>Multi-page HTML &amp; CSS project.</p></article>
-            <article class="grid-card"><h3>Contact Form</h3><p>Accessible form with validation.</p></article>
-            <article class="grid-card"><h3>School System</h3><p>Student records app with JavaScript.</p></article>
+            <article class="grid-card">
+                <h3>Portfolio Site</h3>
+                <p>Multi-page HTML &amp; CSS project with responsive design.</p>
+            </article>
+            <article class="grid-card">
+                <h3>Contact Form</h3>
+                <p>Accessible form with validation and focus states.</p>
+            </article>
+            <article class="grid-card">
+                <h3>School System</h3>
+                <p>Student records app with JavaScript functionality.</p>
+            </article>
+            <article class="grid-card">
+                <h3>Gallery Page</h3>
+                <p>Interactive image gallery with lightbox effects.</p>
+            </article>
+            <article class="grid-card">
+                <h3>Blog Layout</h3>
+                <p>Multi-column blog with sidebar and search bar.</p>
+            </article>
+            <article class="grid-card">
+                <h3>Dashboard</h3>
+                <p>Admin dashboard with charts and data visualization.</p>
+            </article>
         </div>
     </section>
 
