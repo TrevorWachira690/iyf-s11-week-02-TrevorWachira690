@@ -76,6 +76,8 @@ small { font-size: var(--font-sm); }
     --color-success:       #16a34a;
     --color-danger:        #dc2626;
     --color-warning:       #d97706;
+    
+    --radius:              6px;
 }
 
 /* Links */
@@ -287,6 +289,8 @@ nav.main-nav ul li a.active {
 .card img {
     width: 100%;
     display: block;
+    height: 200px;
+    object-fit: cover;
 }
 
 .card-body {
@@ -345,6 +349,11 @@ nav.main-nav ul li a.active {
     object-fit: cover;
     border-radius: 8px;
     display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
 }
 
 /* Magazine layout */
