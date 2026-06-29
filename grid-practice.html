@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4.2 — CSS Grid Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { padding: 2rem; max-width: 1000px; margin: 0 auto; }
+        .practice-section { margin-bottom: 3rem; }
+
+        /* Exercise 1: Photo gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .photo-gallery img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        /* Exercise 2: Magazine layout */
+        .magazine {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: auto 1fr 1fr auto;
+            gap: 0.75rem;
+            min-height: 320px;
+        }
+        .mag-header {
+            grid-column: 1 / -1;
+            background: var(--color-primary);
+            color: #fff;
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-weight: 700;
+        }
+        .mag-sidebar {
+            grid-row: 2 / 4;
+            background: var(--color-primary-light);
+            padding: 1rem;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+        }
+        .mag-main {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            padding: 1rem;
+            border-radius: var(--radius);
+        }
+        .mag-footer {
+            grid-column: 1 / -1;
+            background: var(--color-text);
+            color: #fff;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Exercise 3: Responsive project grid */
+        .project-grid-demo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        .grid-card {
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 1rem;
+        }
+        .grid-card h3 { font-size: 1rem; margin-bottom: 0.35rem; }
+        .grid-card p { font-size: 0.85rem; margin: 0; }
+
+        @media (min-width: 768px) {
+            .project-grid-demo { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .project-grid-demo { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+            .magazine { grid-template-columns: 1fr; }
+            .mag-sidebar { grid-row: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task 4.2 — CSS Grid Practice</h1>
+    <p>Three simple Grid exercises from Week 2.</p>
+
+    <section class="practice-section">
+        <h2>Exercise 1: Photo Gallery</h2>
+        <p>A 3-column grid with equal widths and consistent gaps.</p>
+        <div class="photo-gallery">
+            <img src="https://placehold.co/300x200/0076ff/ffffff?text=Photo+1" alt="Gallery photo 1">
+            <img src="https://placehold.co/300x200/6366f1/ffffff?text=Photo+2" alt="Gallery photo 2">
+            <img src="https://placehold.co/300x200/005ecc/ffffff?text=Photo+3" alt="Gallery photo 3">
+            <img src="https://placehold.co/300x200/0076ff/ffffff?text=Photo+4" alt="Gallery photo 4">
+            <img src="https://placehold.co/300x200/6366f1/ffffff?text=Photo+5" alt="Gallery photo 5">
+            <img src="https://placehold.co/300x200/005ecc/ffffff?text=Photo+6" alt="Gallery photo 6">
+        </div>
+    </section>
+
+    <section class="practice-section">
+        <h2>Exercise 2: Magazine Layout</h2>
+        <p>Header and footer span full width; sidebar sits beside main content.</p>
+        <div class="magazine">
+            <header class="mag-header">Site Header — spans full width</header>
+            <aside class="mag-sidebar">Sidebar — links, ads, or extra info</aside>
+            <main class="mag-main">Main content area — articles, blog posts, or page body goes here.</main>
+            <main class="mag-main">Another main content block in the same column.</main>
+            <footer class="mag-footer">Footer — spans full width</footer>
+        </div>
+    </section>
+
+    <section class="practice-section">
+        <h2>Exercise 3: Responsive Project Grid</h2>
+        <p>1 column on mobile, 2 on tablet, 3 on desktop (resize to test).</p>
+        <div class="project-grid-demo">
+            <article class="grid-card"><h3>Portfolio Site</h3><p>Multi-page HTML &amp; CSS project.</p></article>
+            <article class="grid-card"><h3>Contact Form</h3><p>Accessible form with validation.</p></article>
+            <article class="grid-card"><h3>School System</h3><p>Student records app with JavaScript.</p></article>
+        </div>
+    </section>
+
+</body>
+</html>

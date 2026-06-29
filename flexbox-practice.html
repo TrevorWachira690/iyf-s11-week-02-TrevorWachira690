@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4.1 — Flexbox Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { padding: 2rem; max-width: 1000px; margin: 0 auto; }
+        .practice-section { margin-bottom: 3rem; }
+        .practice-section h2 { margin-top: 0; }
+
+        /* Exercise 1: Nav bar */
+        .flex-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-primary);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+        }
+        .flex-nav .logo { color: #fff; font-weight: 700; }
+        .flex-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.25rem;
+            padding: 0;
+        }
+        .flex-nav a { color: #fff; text-decoration: none; font-size: 0.9rem; }
+
+        /* Exercise 2: Card row */
+        .card-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+        }
+        .flex-card {
+            flex: 1 1 200px;
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 1.25rem;
+            min-height: 140px;
+        }
+        .flex-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .flex-card p { font-size: 0.85rem; margin: 0; }
+
+        /* Exercise 3: Footer */
+        .flex-footer {
+            background: var(--color-text);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+        }
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .footer-row div { flex: 1 1 150px; }
+        .footer-row h4 { color: #fff; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .footer-row p { color: #cbd5e1; font-size: 0.85rem; margin: 0; }
+        .footer-copy { text-align: center; font-size: 0.8rem; color: #94a3b8; padding-top: 1rem; border-top: 1px solid #334155; }
+    </style>
+</head>
+<body>
+
+    <h1>Task 4.1 — Flexbox Practice</h1>
+    <p>Three simple Flexbox exercises from Week 2.</p>
+
+    <section class="practice-section">
+        <h2>Exercise 1: Navigation Bar</h2>
+        <p>Logo on the left, links on the right, vertically centered.</p>
+        <nav class="flex-nav" aria-label="Example navigation">
+            <span class="logo">MyLogo</span>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section class="practice-section">
+        <h2>Exercise 2: Card Row</h2>
+        <p>Three equal-height cards that wrap on smaller screens.</p>
+        <div class="card-row">
+            <article class="flex-card">
+                <h3>Card One</h3>
+                <p>Flexbox keeps these cards evenly spaced and the same height.</p>
+            </article>
+            <article class="flex-card">
+                <h3>Card Two</h3>
+                <p>Resize the browser window to see them wrap to the next line.</p>
+            </article>
+            <article class="flex-card">
+                <h3>Card Three</h3>
+                <p>Each card uses <code>flex: 1 1 200px</code> to grow and shrink.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="practice-section">
+        <h2>Exercise 3: Footer Layout</h2>
+        <p>Three columns with a centered copyright row below.</p>
+        <footer class="flex-footer">
+            <div class="footer-row">
+                <div>
+                    <h4>About</h4>
+                    <p>Student at IYF We Can Academy learning web development.</p>
+                </div>
+                <div>
+                    <h4>Links</h4>
+                    <p>Home · About · Projects · Contact</p>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>Nairobi, Kenya · tmwgeorge69@gmail.com</p>
+                </div>
+            </div>
+            <p class="footer-copy">&copy; 2026 Trevor Wachira. All rights reserved.</p>
+        </footer>
+    </section>
+
+</body>
+</html>
