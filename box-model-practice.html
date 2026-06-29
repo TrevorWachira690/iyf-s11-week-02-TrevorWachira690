@@ -20,6 +20,7 @@
             gap: 20px;
             flex-wrap: wrap;
             margin-bottom: 20px;
+            justify-content: center;
         }
 
         /* Box 1 — just content, no padding/border/margin */
@@ -32,6 +33,7 @@
             justify-content: center;
             font-size: 0.8rem;
             font-weight: bold;
+            border-radius: 4px;
         }
 
         /* Box 2 — content + padding (larger click area) */
@@ -41,6 +43,7 @@
             padding: 20px;  /* space INSIDE the box */
             font-size: 0.8rem;
             font-weight: bold;
+            border-radius: 4px;
         }
 
         /* Box 3 — content + padding + visible border */
@@ -51,6 +54,7 @@
             border: 4px solid #f59e0b; /* visible border around the box */
             font-size: 0.8rem;
             font-weight: bold;
+            border-radius: 4px;
         }
 
         /* Box 4 — margin creates space between this box and others */
@@ -62,6 +66,7 @@
             margin: 20px; /* space OUTSIDE the box — pushes it away from others */
             font-size: 0.8rem;
             font-weight: bold;
+            border-radius: 4px;
         }
 
 
@@ -84,6 +89,7 @@
             border: none;
             background-color: #fca5a5;
             margin-bottom: 15px;
+            border-radius: 4px;
             /* NO box-sizing — this box is actually 340px wide! */
         }
 
@@ -93,6 +99,7 @@
             border: none;
             background-color: #86efac;
             box-sizing: border-box; /* FIX: padding stays inside the 300px */
+            border-radius: 4px;
         }
 
         .box-label {
@@ -113,11 +120,19 @@
             overflow: hidden;          /* keeps image corners rounded */
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
         }
 
         .card img {
             width: 100%;              /* image fills full card width */
             display: block;
+            height: 200px;
+            object-fit: cover;
         }
 
         .card-body {
@@ -145,10 +160,26 @@
             border-radius: 5px;
             font-size: 0.95rem;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
 
         .card-body button:hover {
             background-color: #005ecc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .box-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -186,7 +217,7 @@
     <p>A 300px card with image, title, description, and a button.</p>
 
     <div class="card">
-        <img src="C:\Users\great\OneDrive\iyf-s10-week-01--TrevorWachira690-\images\Personal-website.png" alt="Project preview image">
+        <img src="https://placehold.co/300x200/0076ff/ffffff?text=Project+Preview" alt="Project preview image">
         <div class="card-body">
             <h3>My First Project</h3>
             <p>This is a sample project card. It has exact spacing as required by the task.</p>
