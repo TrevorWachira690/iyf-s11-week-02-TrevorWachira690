@@ -1,5 +1,49 @@
 /* ============================================
-   UNIVERSAL RESET
+   TASK 3.3 — TYPOGRAPHY SYSTEM
+   TASK 3.4 — COLOR SCHEME
+   ============================================ */
+:root {
+    /* Font families */
+    --font-heading: "Poppins", sans-serif;
+    --font-body: "Open Sans", sans-serif;
+
+    /* Type scale */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-base: 1rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.25rem;
+    --font-2xl: 1.5rem;
+    --font-3xl: 1.875rem;
+    --font-4xl: 2.25rem;
+
+    /* Colors */
+    --color-primary: #0076ff;
+    --color-secondary: #6366f1;
+    --color-background: #f8fafc;
+    --color-text: #1e293b;
+    --color-muted: #64748b;
+    --color-white: #ffffff;
+    --color-primary-light: #e8f0fe;
+    --color-primary-dark: #005ecc;
+    --color-danger: #ef4444;
+    --color-border: #cbd5e1;
+
+    /* Spacing */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2.5rem;
+
+    /* Effects */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   TASK 3.1 — RESET & BASE STYLES
    ============================================ */
 * {
     box-sizing: border-box;
@@ -7,235 +51,322 @@
     padding: 0;
 }
 
-/* ============================================
-   BASE BODY
-   ============================================ */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #ffffff;
+    font-family: var(--font-body);
+    font-size: var(--font-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--color-primary);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.3;
+}
+
+h1 { font-size: var(--font-3xl); margin-bottom: var(--space-md); }
+h2 { font-size: var(--font-2xl); margin: var(--space-xl) 0 var(--space-sm); }
+h3 { font-size: var(--font-xl); margin-bottom: var(--space-sm); }
+h4 { font-size: var(--font-lg); }
+h5 { font-size: var(--font-base); }
+h6 { font-size: var(--font-sm); }
+
+p {
+    color: var(--color-muted);
+    margin-bottom: var(--space-md);
+}
+
+ul {
+    padding-left: 1.25rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+}
+
+small {
+    font-size: var(--font-sm);
+}
 
 /* ============================================
-   NAVIGATION
+   TASK 4.1 — FLEXBOX NAVIGATION
+   TASK 4.3 — MOBILE HAMBURGER MENU
    ============================================ */
-nav {
-    background-color: #0076ff;
-    padding: 15px 40px;
+.site-nav {
+    background-color: var(--color-primary);
+    padding: var(--space-md) var(--space-lg);
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
 
-nav .logo {
-    color: #fff;
-    font-size: 1.3rem;
-    font-weight: bold;
+.site-nav .logo {
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: var(--font-lg);
+    font-weight: 700;
     text-decoration: none;
 }
 
-nav ul {
+.menu-checkbox {
+    display: none;
+}
+
+.menu-btn {
+    display: block;
+    color: var(--color-white);
+    font-size: var(--font-2xl);
+    cursor: pointer;
+    padding: var(--space-sm);
+    line-height: 1;
+}
+
+.nav-links {
     list-style: none;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+}
+
+.menu-checkbox:checked ~ .nav-links {
     display: flex;
-    gap: 20px;
 }
 
-nav ul li a {
-    color: #fff;
+.nav-links a {
+    color: var(--color-white);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: var(--font-sm);
+    padding: var(--space-sm);
+    border-radius: 4px;
+    display: block;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-/* ============================================
-   FOOTER
-   ============================================ */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    margin-top: 60px;
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--color-white);
 }
 
 /* ============================================
-   INDEX PAGE — HERO & INTRO
+   BUTTONS (Task 4.4 — hover & transitions)
    ============================================ */
+.button,
+.hero-links a,
+button[type="submit"],
+.social-links a {
+    display: inline-block;
+    padding: 0.65rem 1.25rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: var(--font-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.button:hover,
+.hero-links a:hover,
+button[type="submit"]:hover,
+.social-links a:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-outline {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+}
+
+.button-outline:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* ============================================
+   INDEX — HERO (mobile-first)
+   ============================================ */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+
+main.home-main {
+    max-width: 100%;
+    padding: 0;
+}
+
 .hero {
-    background-color: #e8f0fe;
-    padding: 80px 40px;
+    background-color: var(--color-primary-light);
+    padding: var(--space-xl) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: var(--space-lg);
 }
 
-.hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+.hero-text h1 {
+    font-size: var(--font-3xl);
+    margin-bottom: var(--space-sm);
 }
 
-.hero p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 30px;
+.hero-text p {
+    font-size: var(--font-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 400px;
+}
+
+.hero-image img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-links {
     display: flex;
-    justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
-}
-
-.hero-links a {
-    background-color: #0076ff;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.hero-links a:hover {
-    background-color: #005ecc;
+    justify-content: center;
+    gap: var(--space-sm);
 }
 
 .intro {
     max-width: 700px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
-
-.intro h2 {
-    margin-bottom: 15px;
-}
-
-.intro p {
-    line-height: 1.8;
-    color: #555;
+    margin: var(--space-xl) auto;
+    padding: 0 var(--space-md);
 }
 
 /* ============================================
    ABOUT PAGE
    ============================================ */
-main {
-    max-width: 750px;
-    margin: 50px auto;
-    padding: 0 20px;
-}
-
-/* Hero needs to break out of main's max-width constraint */
-.hero {
-    max-width: 100%;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    box-sizing: border-box;
-}
-
-h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 1.4rem;
-    margin: 30px 0 10px;
-}
-
-p {
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-ul {
-    padding-left: 20px;
-    line-height: 2;
-    color: #555;
-}
-
 .timeline {
-    border-left: 3px solid #0076ff;
-    padding-left: 20px;
-    margin-top: 10px;
+    border-left: 3px solid var(--color-primary);
+    padding-left: var(--space-lg);
+    margin-top: var(--space-sm);
 }
 
 .timeline-item {
-    margin-bottom: 20px;
+    margin-bottom: var(--space-lg);
 }
 
 .timeline-item h3 {
-    font-size: 1rem;
-    color: #0076ff;
+    color: var(--color-primary);
+    font-size: var(--font-base);
 }
 
 .timeline-item p {
-    margin: 5px 0 0;
-    font-size: 0.95rem;
+    margin-top: var(--space-sm);
+    font-size: var(--font-sm);
 }
 
 /* ============================================
-   PROJECTS PAGE
+   TASK 4.2 — PROJECTS GRID
    ============================================ */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
 }
 
 .project-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
     overflow: hidden;
-    background: #fff;
+    background: var(--color-white);
+    transition: var(--transition);
 }
 
-.project-card img {
-    width: 100%;
-    display: block;
+.project-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
 }
 
 .project-card-body {
-    padding: 15px;
+    padding: var(--space-lg);
 }
 
 .project-card-body h2 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+    font-size: var(--font-lg);
+    margin: 0 0 var(--space-sm);
 }
 
 .project-card-body p {
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.6;
+    font-size: var(--font-sm);
+    margin: 0;
 }
 
 /* ============================================
-   CONTACT PAGE
+   CONTACT — FORM & LAYOUT
    ============================================ */
+.contact-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
+
 fieldset {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
 }
 
 legend {
-    font-weight: bold;
-    font-size: 1.1rem;
-    padding: 0 10px;
-    color: #444;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: var(--font-base);
+    padding: 0 var(--space-sm);
+    color: var(--color-text);
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+    font-size: var(--font-sm);
+    color: var(--color-text);
 }
 
 input[type="text"],
@@ -244,30 +375,36 @@ input[type="tel"],
 select,
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
+    padding: 0.65rem;
+    margin-bottom: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: var(--font-base);
+    font-family: var(--font-body);
+    transition: var(--transition);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    outline: none;
-    border-color: #0076ff;
+    border-color: var(--color-primary);
+}
+
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+    border-color: var(--color-danger);
 }
 
 .optional {
-    font-weight: normal;
-    font-size: 0.85rem;
-    color: #888;
+    font-weight: 400;
+    font-size: var(--font-xs);
+    color: var(--color-muted);
 }
 
 .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--space-sm);
 }
 
 .checkbox-group input {
@@ -277,59 +414,186 @@ textarea:focus {
 
 .checkbox-group label {
     margin: 0;
-    font-weight: normal;
+    font-weight: 400;
 }
 
 button[type="submit"] {
     width: 100%;
-    padding: 12px;
-    background-color: #0076ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #005ecc;
+.contact-sidebar {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
 }
 
-.social-links {
-    margin-top: 40px;
+.contact-sidebar section + section {
+    margin-top: var(--space-lg);
 }
 
-.social-links h2 {
-    margin-bottom: 15px;
+.contact-sidebar h2 {
+    font-size: var(--font-lg);
+    margin-top: 0;
 }
 
 .social-links ul {
     list-style: none;
+    padding: 0;
     display: flex;
-    gap: 15px;
     flex-wrap: wrap;
+    gap: var(--space-sm);
 }
 
-.social-links ul li a {
-    background-color: #0076ff;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9rem;
-}
-
-.social-links ul li a:hover {
-    background-color: #005ecc;
-}
-
-.location {
-    margin-top: 30px;
-    color: #555;
+.location address {
+    font-style: normal;
     line-height: 1.8;
+    color: var(--color-muted);
 }
 
-.location h2 {
-    color: #333;
-    margin-bottom: 10px;
+/* ============================================
+   TASK 4.1 — FOOTER FLEX LAYOUT
+   ============================================ */
+.site-footer {
+    background-color: var(--color-text);
+    color: var(--color-white);
+    margin-top: var(--space-xl);
+    padding: var(--space-xl) var(--space-md) var(--space-md);
 }
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    max-width: 1100px;
+    margin: 0 auto var(--space-lg);
+}
+
+.footer-col h3 {
+    color: var(--color-white);
+    font-size: var(--font-base);
+    margin-bottom: var(--space-sm);
+}
+
+.footer-col p,
+.footer-col a {
+    color: #cbd5e1;
+    font-size: var(--font-sm);
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    color: var(--color-white);
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: var(--space-sm);
+}
+
+.footer-copy {
+    text-align: center;
+    font-size: var(--font-sm);
+    color: #94a3b8;
+    border-top: 1px solid #334155;
+    padding-top: var(--space-md);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   TASK 4.3 — RESPONSIVE BREAKPOINTS
+   (mobile-first: base = mobile)
+   ============================================ */
+
+/* Tablet — 768px */
+@media (min-width: 768px) {
+    h1 { font-size: var(--font-4xl); }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        padding-top: 0;
+        gap: var(--space-md);
+    }
+
+    .menu-checkbox:checked ~ .nav-links {
+        flex-direction: row;
+    }
+
+    .hero {
+        flex-direction: row;
+        text-align: left;
+        padding: var(--space-xl) var(--space-lg);
+        justify-content: center;
+    }
+
+    .hero-text {
+        flex: 1;
+        max-width: 500px;
+    }
+
+    .hero-links {
+        justify-content: flex-start;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-layout {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        align-items: start;
+    }
+
+    button[type="submit"] {
+        width: auto;
+        min-width: 200px;
+    }
+
+    .footer-columns {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .footer-col {
+        flex: 1;
+    }
+}
+
+/* Desktop — 1024px */
+@media (min-width: 1024px) {
+    .site-nav {
+        padding: var(--space-md) var(--space-xl);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    main {
+        padding: var(--space-xl) var(--space-lg);
+    }
+}
+
+/* Large Desktop — 1280px */
+@media (min-width: 1280px) {
+    .hero {
+        padding: 4rem var(--space-xl);
+    }
+
+    .hero-text h1 {
+        font-size: 2.75rem;
+    }
+}
+
