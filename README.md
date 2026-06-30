@@ -47,7 +47,7 @@ I learned that CSS is not just about colors — it is about how every element si
 3. **Responsive grid** — Getting the project cards to show 1, 2, or 3 columns at different screen sizes took practice with media queries and `grid-template-columns`.
 
 ## Screenshots
-![Styled portfolio homepage](images/Personal-website.png)
+![Styled portfolio homepage](https://github.com/TrevorWachira690/iyf-s11-week-01-TrevorWachira690/blob/main/images/redesigned-website.png)
 
 ## Live Demo
 [View Live Demo](https://trevorwachira690.github.io/iyf-s11-week-02-TrevorWachira690/index.html)
